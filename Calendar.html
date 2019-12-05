@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        #mySelect {
+            font-size: 30px;
+            padding: 0px 10px;
+            background-color: cyan;
+            border-radius: 10px;
+            color: blue;
+            font-weight: bold;
+            font-family: cursive;
+        }
+        
+        #click {
+            font-size: 30px;
+            background-color: black;
+            color: cyan;
+            font-weight: 700;
+            font-family: sans-serif;
+            border-color: aqua;
+            border-radius: 12px;
+        }
+        
+        #day {
+            display: inline-block;
+            border: 1px solid black;
+            width: 70px;
+            color: red;
+        }
+        
+        #b {
+            border: 1px solid;
+            width: 24%;
+            padding-left: 20%;
+            background-color: darkblue;
+            border-radius: 5px;
+            margin: 15px 0px;
+        }
+        
+        #month {
+            font-family: monospace;
+            font-size: 22px;
+            line-height: 35px;
+            font-weight: normal;
+        }
+        
+        .look {
+            color: cyan;
+        }
+        
+        .data {
+            border: 1px solid black;
+            width: 70px;
+            color: rgb(22, 241, 22);
+        }
+    </style>
+</head>
+
+<body style="background-color: black;margin-left: 20%;margin-top: 30px;">
+    <select id="mySelect" onchange="myFunction()">
+        <option value="1">Jan</option>
+        <option value="2">Feb</option>
+        <option value="3">Mar</option>
+        <option value="4">Apr</option>        
+        <option value="5">May</option>
+        <option value="6">Jun</option>
+        <option value="7">Jul</option>
+        <option value="8">Aug</option>
+        <option value="9">Sep</option>
+        <option value="10">Oct</option>
+        <option value="11">Nov</option>
+        <option value="12">Dec</option>       
+                </select>
+    <h3 id="month"></h3>
+
+    <script>
+        let calendar = {
+            months: [{
+                month: "Jan",
+                Dates: [
+                    null,
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Feb",
+                Dates: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28"
+                ]
+            }, {
+                month: "Mar",
+                Dates: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Apr",
+                Dates: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "May",
+                Dates: [
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Jun",
+                Dates: [
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Jul",
+                Dates: [
+                    null,
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Aug",
+                Dates: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Sep",
+                Dates: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Oct",
+                Dates: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Nov",
+                Dates: [
+                    null,
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }, {
+                month: "Dec",
+                Dates: [
+                    null,
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                ]
+            }]
+        };
+
+        function myFunction() {
+            let main = document.querySelector('div');
+            var x = document.getElementById('mySelect').value;
+            console.log(x);
+
+            let container = document.createElement('div');
+            container.className = 'look';
+            let container1 = document.createElement('div');
+            //for (i = value) {
+            i = x - 1;
+            let a = document.createElement('div');
+            a.innerHTML = calendar.months[i].month;
+            a.id = 'b';
+            container.appendChild(a);
+            let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            for (k = 0; k < 7; k++) {
+                let check = document.createElement('div');
+                check.id = 'day';
+                check.innerHTML = days[k];
+                container.appendChild(check);
+            }
+
+            for (j = 0; j < calendar.months[i].Dates.length; j++) {
+                //console.log(calendar.months[i].Dates[j]);
+                let b = document.createElement('td');
+                b.className = 'data';
+                b.innerHTML = calendar.months[i].Dates[j];
+                container.appendChild(b);
+                //b.appendChild(check);    
+                if (calendar.months[i].Dates[j] != null && (j + 1) % 7 === 0) {
+                    let cut = document.createElement('br');
+                    container.appendChild(cut);
+                }
+
+
+            }
+            //document.getElementById('month').innerHTML = null;
+            document.getElementById('month').appendChild(container);
+            main.replaceChild(container1, container);
+        }
+
+        //document.getElementById("month").innerHTML = calendar.months[0].month + "</br>" +
+        //calendar.months[0].Dates + "</br>" +
+        //calendar.months[1].month + "</br>" +
+        //calendar.months[2].month + "</br>" +
+        //calendar.months[3].month + "</br>" +
+        //calendar.months[4].month + "</br>" +
+        //calendar.months[5].month + "</br>" +
+        //calendar.months[6].month + "</br>" +
+        //calendar.months[7].month + "</br>" +
+        //calendar.months[8].month + "</br>" +
+        //calendar.months[9].month + "</br>" +
+        //calendar.months[10].month + "</br>" +
+        //calendar.months[11].month;
+    </script>
+</body>
+
+</html>
